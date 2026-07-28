@@ -1,0 +1,29 @@
+title: Detect Periodic Beaconing Activity
+id: 7b63f0fd-6d59-4b4f-9e4f-000000000002
+status: experimental
+description: Detects periodic outbound network beaconing commonly associated with C2 communication.
+author: Sahar Almarzooq
+date: 2026-07-28
+logsource:
+  product: windows
+  category: network_connection
+
+detection:
+  selection:
+    DestinationPort: 443
+  condition: selection
+
+fields:
+  - Image
+  - DestinationIp
+  - DestinationPort
+
+falsepositives:
+  - Scheduled application updates
+  - Monitoring agents
+
+level: medium
+
+tags:
+  - attack.command-and-control
+  - attack.t1071
