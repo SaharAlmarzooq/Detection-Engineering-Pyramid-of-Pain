@@ -32,6 +32,7 @@ Throughout this project, multiple detection approaches are explored, beginning w
 | 6 | TTPs | Behavioral Detection & MITRE ATT&CK |
 
 ---
+
 ## Detection Strategy Evolution
 
 The project demonstrates how detection strategies evolve through progressively more resilient techniques.
@@ -52,6 +53,7 @@ Each stage increases the difficulty for attackers to evade detection while reduc
 ## Skills Demonstrated
 
 - Detection Engineering
+- Detection Engineering Lifecycle
 - Security Operations Center (SOC)
 - Threat Detection
 - IOC Analysis
@@ -66,9 +68,11 @@ Each stage increases the difficulty for attackers to evade detection while reduc
 
 ## Tools & Technologies
 
+- TryHackMe
 - Sigma Rules
 - Sysmon
 - Windows Event Logs
+- Windows Registry
 - Firewall Rules
 - DNS Filtering
 - MITRE ATT&CK Framework
@@ -92,9 +96,11 @@ Detection-Engineering-Pyramid-of-Pain/
 │
 ├── README.md
 ├── LICENSE
+├── Resources.md
+│
 ├── Images/
-├── Sigma-Rules/
-└── Resources.md
+├── Report/
+└── Sigma-Rules/
 ```
 
 ---
@@ -104,6 +110,8 @@ Detection-Engineering-Pyramid-of-Pain/
 ### TryHackMe Summit – Detection Journey
 
 ![TryHackMe Summit](Images/tryhackme-summit-infographic.jpg)
+
+---
 
 ## References
 
