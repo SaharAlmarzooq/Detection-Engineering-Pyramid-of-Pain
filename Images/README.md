@@ -1,3 +1,8 @@
 # Images
 
-This directory contains project screenshots, diagrams, and infographics used throughout the Detection Engineering – Pyramid of Pain project.
+This folder contains project diagrams, screenshots, and visual documentation.
+
+Planned visuals:
+- Pyramid of Pain Overview
+- Detection Evolution
+- Sigma Rules Overview
