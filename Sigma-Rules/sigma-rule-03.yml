@@ -1,0 +1,38 @@
+title: Detect Suspicious Discovery Commands
+id: 7b63f0fd-6d59-4b4f-9e4f-000000000003
+status: experimental
+description: Detects common system discovery commands frequently executed by adversaries after gaining initial access.
+author: Sahar Almarzooq
+date: 2026-07-28
+
+logsource:
+  product: windows
+  category: process_creation
+
+detection:
+  selection:
+    CommandLine|contains:
+      - "whoami"
+      - "hostname"
+      - "ipconfig"
+      - "systeminfo"
+      - "net user"
+      - "net localgroup"
+  condition: selection
+
+fields:
+  - Image
+  - CommandLine
+  - User
+
+falsepositives:
+  - System administrators
+  - IT support scripts
+
+level: high
+
+tags:
+  - attack.discovery
+  - attack.t1082
+  - attack.t1033
+  - attack.t1016
