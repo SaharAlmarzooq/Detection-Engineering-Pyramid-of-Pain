@@ -32,6 +32,22 @@ Throughout this project, multiple detection approaches are explored, beginning w
 | 6 | TTPs | Behavioral Detection & MITRE ATT&CK |
 
 ---
+## Detection Strategy Evolution
+
+The project demonstrates how detection strategies evolve through progressively more resilient techniques.
+
+| Stage | Focus | Detection Method |
+|-------|-------|------------------|
+| 1 | File Identity | SHA256 Hash Detection |
+| 2 | Network Indicator | IP Address Blocking |
+| 3 | Infrastructure | Domain Filtering |
+| 4 | Host Artifact | Registry Monitoring |
+| 5 | Behavior | Beaconing Detection |
+| 6 | Tactics & Techniques | TTP-Based Detection |
+
+Each stage increases the difficulty for attackers to evade detection while reducing the defender's dependence on easily replaceable Indicators of Compromise (IOCs).
+
+---
 
 ## Skills Demonstrated
 
