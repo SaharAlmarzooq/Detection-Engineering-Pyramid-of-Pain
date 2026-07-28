@@ -99,6 +99,19 @@ Detection-Engineering-Pyramid-of-Pain/
 
 ---
 
+## Project Visuals
+
+The following diagrams and screenshots illustrate the Detection Engineering concepts and practical implementations demonstrated throughout this project.
+
+### Planned Visuals
+
+- Pyramid of Pain Overview
+- Detection Strategy Evolution
+- Sigma Rule Examples
+- Detection Workflow
+- Lab Screenshots
+---
+
 ## References
 
 The references used in this project are available in **Resources.md**.
