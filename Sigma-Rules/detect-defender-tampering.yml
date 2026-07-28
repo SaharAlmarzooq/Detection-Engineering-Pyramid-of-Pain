@@ -1,0 +1,21 @@
+title: Detect Windows Defender Real-Time Protection Disabled
+id: 6d9c9c2e-1f0f-4d2d-a1b4-000000000001
+status: experimental
+description: Detects attempts to disable Microsoft Defender Real-Time Protection.
+author: Sahar Almarzooq
+date: 2026-07-28
+logsource:
+  product: windows
+  category: registry_set
+
+detection:
+  selection:
+    TargetObject|contains: '\Windows Defender\Real-Time Protection'
+    Details|contains: 'DisableRealtimeMonitoring'
+  condition: selection
+
+level: high
+
+tags:
+  - attack.defense-evasion
+  - attack.t1562.001
