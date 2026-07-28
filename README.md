@@ -99,8 +99,15 @@ Detection-Engineering-Pyramid-of-Pain/
 ├── Resources.md
 │
 ├── Images/
+│   └── tryhackme-summit-infographic.jpg
+│
 ├── Report/
+│   └── Detection-Engineering-Pyramid-of-Pain.md
+│
 └── Sigma-Rules/
+    ├── detect-defender-tampering.yml
+    ├── sigma-rule-02.yml
+    └── sigma-rule-03.yml
 ```
 
 ---
@@ -109,7 +116,15 @@ Detection-Engineering-Pyramid-of-Pain/
 
 ### TryHackMe Summit – Detection Journey
 
+The infographic below summarizes the progression of detection strategies throughout the Pyramid of Pain, illustrating how detection evolves from simple Indicators of Compromise (IOCs) to resilient TTP-based detection.
+
 ![TryHackMe Summit](Images/tryhackme-summit-infographic.jpg)
+
+---
+
+## Lab
+
+This project is based on the **Summit** room available on TryHackMe and demonstrates practical Detection Engineering concepts through progressively stronger detection strategies aligned with the Pyramid of Pain model.
 
 ---
 
