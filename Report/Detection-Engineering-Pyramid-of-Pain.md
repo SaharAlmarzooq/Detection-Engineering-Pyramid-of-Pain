@@ -1,66 +1,164 @@
-# Detection Engineering – Pyramid of Pain
+# 🛡️ Detection Engineering – Pyramid of Pain
 
-## Objective
+## Executive Summary
 
-The objective of this project was to improve malware detection by moving from simple Indicators of Compromise (IOCs) toward detecting attacker behaviors and techniques.
+This project demonstrates the practical application of Detection Engineering using the Pyramid of Pain framework. The objective was to progressively improve malware detection by moving beyond simple Indicators of Compromise (IOCs) toward identifying attacker behaviors and techniques that are significantly more difficult to evade.
 
-The project follows the Pyramid of Pain concept, demonstrating why detecting attacker TTPs is significantly more effective than relying solely on hashes, IP addresses, or domains.
-
----
-
-## Detection Progression
-
-### Level 1 – File Hash Detection
-
-- Detected malware using file hashes (SHA256).
-- High confidence detection.
-- Easily bypassed by recompiling the malware.
+Throughout the project, multiple malware samples were analyzed, and new detection methods were developed at each stage to increase the operational cost for the attacker.
 
 ---
 
-### Level 2 – IP Address Blocking
+# Pyramid of Pain Overview
 
-- Blocked outbound communication to the attacker infrastructure.
-- Effective against known infrastructure.
-- Easily bypassed by changing public IP addresses.
+The Pyramid of Pain describes how difficult it is for an attacker to change different indicators once defenders begin detecting them.
 
----
+Lower-level indicators such as file hashes are easy to modify, while attacker behaviors and Tactics, Techniques, and Procedures (TTPs) require substantial effort to change.
 
-### Level 3 – Domain Blocking
-
-- Prevented communication using malicious domain names.
-- More resilient than IP blocking.
-- Still bypassed through new domains.
+This project demonstrates that progression through six different detection stages.
 
 ---
 
-### Level 4 – Host Artifact Detection
+# Detection Journey
 
-- Detected malicious registry modifications.
-- Used host-based telemetry with Sigma rules.
-- Increased attacker cost.
+## Stage 1 — File Hash Detection
 
----
+**Detection Method**
+- SHA256 File Hash
 
-### Level 5 – Beaconing Detection
+**Purpose**
+- Identify a known malicious executable.
 
-- Identified periodic outbound HTTPS beaconing.
-- Focused on suspicious communication behavior.
-- More resilient than IOC-based detections.
+**Strengths**
+- Very high confidence.
+- Minimal false positives.
 
----
-
-### Level 6 – TTP Detection
-
-- Detected common attacker discovery commands.
-- Focused on adversary behavior instead of malware artifacts.
-- Highest value detection according to the Pyramid of Pain.
+**Weaknesses**
+- Easily bypassed by recompiling or modifying the malware.
 
 ---
 
-## Key Takeaways
+## Stage 2 — IP Address Detection
 
-- IOC-based detection is useful but easily evaded.
-- Behavioral detections significantly increase attacker effort.
-- Sigma rules provide a flexible method for portable detections.
-- Detection Engineering should prioritize behaviors over indicators whenever possible.
+**Detection Method**
+- Firewall Rule
+
+**Purpose**
+- Block outbound communication with attacker infrastructure.
+
+**Strengths**
+- Prevents communication with known servers.
+
+**Weaknesses**
+- Attackers can easily migrate to new IP addresses.
+
+---
+
+## Stage 3 — Domain Detection
+
+**Detection Method**
+- DNS Filtering
+
+**Purpose**
+- Detect malicious communication based on domain names.
+
+**Strengths**
+- More resilient than IP-based detection.
+
+**Weaknesses**
+- Attackers can register new domains.
+
+---
+
+## Stage 4 — Host Artifact Detection
+
+**Detection Method**
+- Sigma Rule
+- Registry Monitoring
+
+**Purpose**
+- Detect attempts to disable Microsoft Defender Real-Time Protection.
+
+**Observed Activity**
+- Registry modification:
+  - DisableRealtimeMonitoring = 1
+
+**MITRE ATT&CK**
+- T1562.001 — Impair Defenses
+
+---
+
+## Stage 5 — Behavioral Detection
+
+**Detection Method**
+- Network Beaconing Detection
+
+**Purpose**
+- Identify periodic outbound HTTPS connections typical of Command and Control (C2) communications.
+
+**Observed Behavior**
+- Repeated outbound connections
+- Constant communication interval
+- Small network packets
+
+**MITRE ATT&CK**
+- T1071 — Application Layer Protocol
+
+---
+
+## Stage 6 — TTP Detection
+
+**Detection Method**
+- Suspicious Process Creation
+- Sigma Rules
+
+**Purpose**
+- Detect common discovery commands executed after initial compromise.
+
+**Observed Commands**
+- whoami
+- hostname
+- ipconfig
+- systeminfo
+- net user
+- net localgroup
+
+**MITRE ATT&CK**
+
+- T1082 — System Information Discovery
+- T1033 — System Owner/User Discovery
+- T1016 — System Network Configuration Discovery
+
+---
+
+# Detection Engineering Lessons
+
+Throughout this project, detection strategies became progressively more resilient.
+
+Instead of relying only on static indicators, detection evolved toward identifying attacker behaviors and operational techniques.
+
+This significantly increases the effort required for attackers to evade detection while improving defensive visibility.
+
+---
+
+# Skills Demonstrated
+
+- Detection Engineering
+- Sigma Rule Development
+- Threat Hunting
+- Windows Event Analysis
+- Registry Monitoring
+- Firewall Rule Creation
+- DNS Filtering
+- Behavioral Detection
+- MITRE ATT&CK Mapping
+- SOC Investigation
+
+---
+
+# Conclusion
+
+The Pyramid of Pain provides a practical model for designing resilient detection strategies.
+
+By progressing from simple IOCs toward behavioral and TTP-based detections, defenders can substantially increase attacker cost while improving long-term detection capabilities.
+
+This project demonstrates how layered Detection Engineering techniques can strengthen Security Operations Center (SOC) monitoring and response capabilities.
